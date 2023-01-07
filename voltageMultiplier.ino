@@ -13,10 +13,13 @@ void setup() {
   TCCR1A = 0; // reset control
   TCCR1B = 0;
 
-  TCCR1B |= (1 << WGM12) | (1 << CS11); // set ctc mode and prescaler to 1024
+  //TCCR1B |= (1 << WGM12) | (1 << CS10)| (1 << CS12); // set ctc mode and prescaler to 1024
+  //TCCR1B |= (1 << WGM12) | (1 << CS12); // set ctc mode and prescaler to 256
+  //TCCR1B |= (1 << WGM12) | (1 << CS11); // set ctc mode and prescaler to 8
+  TCCR1B |= (1 << WGM12) | (1 << CS10); // set ctc mode and prescaler to 1
 
-   OCR1A = 18 >> 1; // div by 2 because code
-  TIMSK1 = (1 << OCIE1A);
+  OCR1A = 158 >> 0; // timer value, div by 2 because code
+  TIMSK1 = (1 << OCIE1A); // setup interrupt
   
   TCNT1 = 0; // reset timer
 
